@@ -33,7 +33,7 @@ public class calculator {
 			l1.setBounds(50,100,100,20);
 			l2.setBounds(50,140,100,20);
 			l3.setBounds(50,180,100,20);
-			l4.setFont(new Font("Lucida",Font.PLAIN,24));
+			l4.setFont(new Font("Lucida",Font.BOLD,24));
 			t1.setBounds(200,100,100,20);
 			t2.setBounds(200,140,100,20);
 			t3.setBounds(200,180,100,20);
@@ -68,6 +68,7 @@ public class calculator {
 			f.setLayout(null);
 			f.setVisible(true);
 			f.setSize(400,350);
+			
 		}
 		
 		public void actionPerformed(ActionEvent e)
