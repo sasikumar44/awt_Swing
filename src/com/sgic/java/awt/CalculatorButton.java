@@ -69,8 +69,8 @@ public class CalculatorButton {
 						{
 							try
 							{
-								double temp1 = Double.parseDouble(label1.getText());
-								double temp2 = Double.parseDouble(label2.getText());
+								double temp1 = Double.parseDouble(text1.getText());
+								double temp2 = Double.parseDouble(text2.getText());
 								double result;
 								if(radio1.isSelected())
 								{
