@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Skill_table {
 
@@ -53,6 +55,10 @@ public class Skill_table {
 		frame.getContentPane().add(label);
 		
 		JButton btnNewButton = new JButton("Add New Data");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setBounds(515, 60, 131, 36);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -61,7 +67,7 @@ public class Skill_table {
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"NIC Number", "Name", "Front End Skills", "Back End Skills", "Frame Works"},
-				{null, null, null, "", null},
+				{null, null, null, null, null},
 				{null, null, null, null, null},
 				{null, null, null, null, null},
 				{null, null, null, null, null},

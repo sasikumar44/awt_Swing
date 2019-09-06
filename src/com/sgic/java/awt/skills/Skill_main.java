@@ -1,14 +1,27 @@
 package com.sgic.java.awt.skills;
 
-import java.awt.EventQueue;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import com.sgic.java.awt.skills.DbConnection;
+
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.awt.event.ActionEvent;
 
 public class Skill_main {
+	
+	
+	
 
 	private JFrame frame;
 	private JTextField textField;
@@ -41,6 +54,7 @@ public class Skill_main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 666, 415);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,5 +142,30 @@ public class Skill_main {
 		JCheckBox chckbxSpring = new JCheckBox("Spring");
 		chckbxSpring.setBounds(385, 218, 122, 23);
 		frame.getContentPane().add(chckbxSpring);
+		
+		JButton btnApply = new JButton("Apply");
+		btnApply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String url = "jdbc:mysql://localhost/school"; 
+		            Connection conn = DriverManager.getConnection(url,"root","root"); 
+		           // Statement st = conn.createStatement();
+					
+					//DbConnection con ;
+				    //con=(DbConnection) DbConnection.getConnection();
+					String query ="Insert into candidate_skill_set (NIC Number,Name,Front End,Back End,Frameworks) values ()";
+					PreparedStatement pst = ((DbConnection) conn).PreparedStatement(query);
+					pst.setString(1, textField.getText());
+					pst.setString(2, textField_1.getText());
+					pst.executeUpdate();
+					
+				}
+				catch (Exception e1) {
+						e1.printStackTrace();
+				}
+			}
+		});
+		btnApply.setBounds(385, 296, 89, 23);
+		frame.getContentPane().add(btnApply);
 	}
 }

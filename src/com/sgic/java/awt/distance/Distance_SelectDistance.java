@@ -7,8 +7,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Distance_SelectDistance {
+public class Distance_SelectDistance extends JFrame {
 
 	public JFrame frame;
 
@@ -57,16 +59,16 @@ public class Distance_SelectDistance {
 		lblTo.setBounds(209, 81, 48, 14);
 		frame.getContentPane().add(lblTo);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<Object> comboBox = new JComboBox<Object>();
 		comboBox.setToolTipText("Select City");
 		comboBox.setBounds(58, 106, 95, 22);
 		frame.getContentPane().add(comboBox);
-		comboBox.addItem("Jaffna");
-		comboBox.addItem("Kilinochi");
+		comboBox.addItem(new ComboItem("Jaffna", 0));
+		comboBox.addItem(new ComboItem("Kilinochi"));
 		comboBox.addItem("Vavuniya");
 		comboBox.addItem("Colombo");
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox<Object> comboBox_1 = new JComboBox<Object>();
 		comboBox_1.setToolTipText("Select City");
 		comboBox_1.setBounds(209, 106, 95, 22);
 		frame.getContentPane().add(comboBox_1);
@@ -76,6 +78,23 @@ public class Distance_SelectDistance {
 		comboBox_1.addItem("Colombo");
 		
 		JButton btnGetDistance = new JButton("Get Distance");
+		btnGetDistance.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Object item1 = comboBox.getSelectedItem();
+				int value1 = ((ComboItem)item1).getValue();
+				String key1 = ((Q3_4_ComboItem)item1).getKey();
+				
+				Object item2 = comboBox_1.getSelectedItem();
+				int value2 = ((Q3_4_ComboItem)item2).getValue();
+				String key2 = ((Q3_4_ComboItem)item2).getKey();
+				
+				lblNewLabel_1.setText(key1);
+				label.setText(key2);
+				
+				label_1.setText(Integer.toString(Q3_2_DistanceSwingTwo.getDistance(value1, value2)));
+				
+			}
+		});
 		btnGetDistance.setBounds(374, 106, 115, 23);
 		frame.getContentPane().add(btnGetDistance);
 		

@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Distance_AddDistance {
 
@@ -26,6 +29,8 @@ public class Distance_AddDistance {
 	private JTextField textField_13;
 	private JTextField textField_14;
 	private JTextField textField_15;
+	private int[] city = new int[16];
+	private static int[][] city1 = new int[4][4];
 
 	/**
 	 * Launch the application.
@@ -175,5 +180,59 @@ public class Distance_AddDistance {
 		textField_15.setColumns(10);
 		textField_15.setBounds(435, 203, 96, 20);
 		frame.getContentPane().add(textField_15);
+		
+		JButton btnEnterData = new JButton("Enter Data");
+		btnEnterData.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(insertData()) {
+					label_4.setText("Success!");
+				}
+				else {
+					label_4.setText("Failed!");
+				}
+				
+			}
+			
+		});
+		
+		btnEnterData.setBounds(442, 248, 89, 23);
+		frame.getContentPane().add(btnEnterData);
+	}
+	
+	
+	public boolean insertData() {
+		city[0]=Integer.parseInt(textField.getText());
+		city[1]=Integer.parseInt(textField_1.getText());
+		city[2]=Integer.parseInt(textField_2.getText());
+		city[3]=Integer.parseInt(textField_3.getText());
+		city[4]=Integer.parseInt(textField_4.getText());
+		city[5]=Integer.parseInt(textField_5.getText());
+		city[6]=Integer.parseInt(textField_6.getText());
+		city[7]=Integer.parseInt(textField_7.getText());
+		city[8]=Integer.parseInt(textField_8.getText());
+		city[9]=Integer.parseInt(textField_9.getText());
+		city[10]=Integer.parseInt(textField_10.getText());
+		city[11]=Integer.parseInt(textField_11.getText());
+		city[12]=Integer.parseInt(textField_12.getText());
+		city[13]=Integer.parseInt(textField_13.getText());
+		city[14]=Integer.parseInt(textField_14.getText());
+		city[15]=Integer.parseInt(textField_15.getText());
+		
+		int k=0;
+		
+		for(int i=0; i<4; i++) {
+			for(int j=0; j<4; j++) {
+				city1[i][j]=city[k];
+				k++;
+			}
+		}
+		
+		return true;
+	}
+	
+	public static int getDistance(int a, int b) {
+		return city1[a][b];
 	}
 }

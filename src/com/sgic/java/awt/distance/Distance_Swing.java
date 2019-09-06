@@ -1,3 +1,4 @@
+
 package com.sgic.java.awt.distance;
 
 import java.awt.*;
@@ -10,7 +11,6 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 public class Distance_Swing {
 
 	private JFrame frame;
